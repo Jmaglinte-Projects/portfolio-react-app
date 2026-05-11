@@ -1,0 +1,51 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: monospace;
+  text-rendering: geometricPrecision;
+  font-size: 14px;
+  scroll-behavior: smooth;
+}
+
+a,
+ul,
+li {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p,
+span {
+  margin-bottom: 5px;
+  display: inline-block;
+  line-height: 23px;
+}
+
+img {
+  max-width: 100%;
+}
+
+#matrix-canvas {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}

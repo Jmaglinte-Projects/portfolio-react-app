@@ -1,0 +1,43 @@
+import styled from "styled-components";
+
+export const LoadingWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000000db;
+
+  .loader {
+    display: inline-flex;
+    gap: 10px;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    height: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(#222 0 0) top/100% 0% no-repeat,
+      radial-gradient(farthest-side, #000 95%, #0000) 50%/8px 8px no-repeat #fff;
+    animation: l9 4s infinite ease-in;
+  }
+  @keyframes l9 {
+    0% {
+      background-size: 100% 0%, 8px 8px;
+      background-position: top, 50% 50%;
+    }
+    80% {
+      background-size: 100% 70%, 8px 8px;
+      background-position: top, 50% 70%;
+    }
+    84%,
+    100% {
+      background-size: 100% 0%, 8px 8px;
+      background-position: top, 50% 50%;
+    }
+  }
+`;

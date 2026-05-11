@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jaffy Maglinte | Software Engineer Portfolio</title>
+    <meta
+      name="description"
+      content="Jaffy Maglinte is a software engineer specializing in web and full-stack development. Explore projects, technical skills, and professional experience."
+    />
+    <meta
+      name="keywords"
+      content="Jaffy Maglinte, Jmaglinte, software engineer, web developer, full-stack developer, portfolio, React, TypeScript"
+    />
+    <meta name="author" content="Jaffy Maglinte" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="canonical" href="https://portfolio.jmaglinte.com/" />
+    <link
+      rel="alternate"
+      href="https://portfolio.jmaglinte.com/"
+      hreflang="en"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jaffy Maglinte Portfolio" />
+    <meta
+      property="og:title"
+      content="Jaffy Maglinte | Software Engineer Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Explore Jaffy Maglinte's software engineering portfolio, including projects, technical skills, and professional experience."
+    />
+    <meta property="og:url" content="https://portfolio.jmaglinte.com/" />
+    <meta name="twitter:card" content="summary" />
+    <meta
+      name="twitter:title"
+      content="Jaffy Maglinte | Software Engineer Portfolio"
+    />
+    <meta
+      name="twitter:description"
+      content="Software engineer portfolio of Jaffy Maglinte featuring projects, skills, and experience."
+    />
+    <link rel="stylesheet" href="/src/assets/css/fake_hacking_program.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jaffy Maglinte",
+        "url": "https://portfolio.jmaglinte.com/",
+        "jobTitle": "Software Engineer",
+        "sameAs": [
+          "https://www.linkedin.com/in/jmaglinte/",
+          "https://github.com/jaffymaglinte",
+          "https://www.facebook.com/jmaglinte12"
+        ]
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="matrix-container">
+      <canvas id="matrix"></canvas>
+    </div>
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      const characters =
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const charactersArray = characters.split("");
+
+      // Matrix configuration
+      const fontSize = 16;
+      const speed = 3;
+
+      // Create the canvas and context
+      const canvas = document.getElementById("matrix");
+      const context = canvas?.getContext("2d");
+
+      // Set the canvas dimensions
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      // Calculate the number of columns and rows
+      const columns = Math.floor(canvas.width / fontSize);
+      const rows = Math.floor(canvas.height / fontSize);
+
+      // Initialize the columns
+      const matrix = [];
+      for (let i = 0; i < columns; i++) {
+        matrix[i] = 1;
+      }
+
+      // Matrix animation
+      function drawMatrix() {
+        context.fillStyle = "rgba(0, 0, 0, 0.05)";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        context.fillStyle = "#00FF00";
+        context.font = fontSize + "px monospace";
+
+        for (let i = 0; i < matrix.length; i++) {
+          const text =
+            charactersArray[Math.floor(Math.random() * charactersArray.length)];
+          context.fillText(text, i * fontSize, matrix[i] * fontSize);
+
+          if (matrix[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            matrix[i] = 0;
+          }
+
+          matrix[i]++;
+        }
+      }
+
+      // Render loop
+      const animateMatrix = () => {
+        drawMatrix();
+        requestAnimationFrame(animateMatrix);
+      };
+
+      setTimeout(() => {
+        animateMatrix();
+      }, 1500);
+    </script>
+  </body>
+</html>
