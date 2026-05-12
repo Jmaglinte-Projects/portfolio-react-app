@@ -229,35 +229,38 @@ export const WorksItemWrapper = styled.div`
 `;
 
 export const WorkItemActions = styled.div`
-  margin: 25px 0 0;
+  margin: 16px 0 0;
   display: flex;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
 
   a {
-    padding-right: 10px;
-    border-right: 1px solid;
-    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid rgba(126, 254, 126, 0.45);
+    border-radius: 6px;
+    line-height: 1.2;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease;
+  }
 
-    &:last-child {
-      margin: 0;
-      padding: 0;
-      border: none;
-    }
+  a:hover {
+    border-color: rgba(126, 254, 126, 0.8);
+    background: rgba(126, 254, 126, 0.1);
   }
 
   @media screen and (max-width: 600px) {
     margin-top: 12px;
-    gap: 0;
+    gap: 8px;
 
     a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       padding: 8px 12px;
-      border: 1px solid rgba(126, 254, 126, 0.4);
-      border-radius: 6px;
-      margin-right: 10px;
-      margin-bottom: 8px;
+      min-height: 36px;
     }
   }
 `;
