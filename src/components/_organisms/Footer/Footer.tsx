@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { FooterWrapper, LinkWrapper, CloseButtonWrapper } from "./elements";
 import { FooterProps } from "./types";
 
@@ -12,6 +12,19 @@ const quickLinks = [
 const Footer = (props: FooterProps) => {
   const { onClose } = props;
   const [activeSection, setActiveSection] = useState("about");
+
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
+    event.preventDefault();
+    const sectionElement = document.getElementById(id);
+    if (!sectionElement) return;
+
+    setActiveSection(id);
+    sectionElement.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+    window.history.replaceState(null, "", `#${id}`);
+  };
 
   useEffect(() => {
     const sectionIds = quickLinks.map((link) => link.id);
@@ -64,7 +77,7 @@ const Footer = (props: FooterProps) => {
             key={link.id}
             href={`#${link.id}`}
             className={activeSection === link.id ? "active" : ""}
-            onClick={() => setActiveSection(link.id)}
+            onClick={(event) => handleNavClick(event, link.id)}
           >
             {link.label}
           </a>
