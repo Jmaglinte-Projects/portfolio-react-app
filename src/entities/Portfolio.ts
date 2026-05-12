@@ -40,8 +40,13 @@ export type PersonalProject = {
   description: string;
   posterSrc: string;
   techs: string[];
-  demoLink: string;
-  sourceCodeLink: string;
+  demoLink?: string;
+  sourceCodeLink?: string;
+  sourceLinks?: Array<{
+    title: string;
+    link: string;
+  }>;
+  requestDemo?: boolean;
 };
 
 export type Skill = {

@@ -1,11 +1,28 @@
-import syled, { styled } from "styled-components";
+import styled from "styled-components";
 
-export const HomeWrapper = syled.div``;
+export const HomeWrapper = styled.div`
+  max-width: 100%;
+  padding-bottom: calc(92px + env(safe-area-inset-bottom));
+
+  @media screen and (max-width: 600px) {
+    padding-bottom: calc(150px + env(safe-area-inset-bottom));
+  }
+`;
 
 export const TitleWrapper = styled.div`
   font-size: 30px;
+  padding-top: 20px;
   margin-bottom: 20px;
   font-weight: bold;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 2px;
+    margin-top: 8px;
+    background: linear-gradient(to right, var(--text), transparent);
+  }
 
   @media screen and (max-width: 600px) {
     font-size: 22px;
@@ -20,10 +37,8 @@ export const ProfileDetailsWrapper = styled.div`
 
   .profile {
     width: 190px;
-    /* height: 285px; */
     background: 0 0;
     border-radius: 30px;
-    /* min-height: 285px; */
     z-index: 9;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
   }
@@ -65,7 +80,7 @@ export const AboutMeWrapper = styled.div`
 `;
 
 export const SkillsWrapper = styled.div`
-  margin: 40px 0 0 0;
+  margin: 20px 0 0 0;
   text-align: justify;
 
   h1 {
@@ -88,7 +103,6 @@ export const SkillsListWrapper = styled.div`
 `;
 
 export const SkillItemWrapper = styled.div`
-  /* width: 80px; */
   transition: all 0.4s ease;
 
   span {
@@ -115,7 +129,7 @@ export const SkillItemWrapper = styled.div`
 `;
 
 export const WorksWrapper = styled.div`
-  margin: 45px 0 0 0;
+  margin: 20px 0 0 0;
 
   .actions {
     text-align: center;
@@ -128,6 +142,10 @@ export const WorksListWrapper = styled.div`
   justify-content: center;
   gap: 40px;
   width: 100%;
+
+  @media screen and (max-width: 600px) {
+    gap: 14px;
+  }
 `;
 
 export const WorksItemWrapper = styled.div`
@@ -145,12 +163,26 @@ export const WorksItemWrapper = styled.div`
   }
 
   position: relative;
+
   .title {
     display: block;
     background-color: var(--color);
     font-weight: bold;
     font-size: 17px;
     margin-bottom: 15px;
+  }
+
+  .description {
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  h4 {
+    margin: 10px 0 2px;
+  }
+
+  .techs {
+    display: inline-block;
   }
 
   img {
@@ -164,18 +196,35 @@ export const WorksItemWrapper = styled.div`
     flex: 1fr;
   }
 
-  .techs {
-    display: inline-block;
-  }
-
   &:hover {
     opacity: 10;
     transition: all 0.4s ease;
-    /* transform: scale(1.1); */
   }
 
   @media screen and (max-width: 600px) {
     grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid rgba(126, 254, 126, 0.35);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.45);
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid rgba(126, 254, 126, 0.25);
+    }
+
+    .title {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .description {
+      margin-bottom: 6px;
+    }
   }
 `;
 
@@ -195,10 +244,27 @@ export const WorkItemActions = styled.div`
       border: none;
     }
   }
+
+  @media screen and (max-width: 600px) {
+    margin-top: 12px;
+    gap: 0;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(126, 254, 126, 0.4);
+      border-radius: 6px;
+      margin-right: 10px;
+      margin-bottom: 8px;
+    }
+  }
 `;
 
 export const ExperienceWrapper = styled.div`
-  margin: 45px 0 0;
+  margin: 20px 0 0;
+
   .ant-timeline-item-tail {
     background: #ffffff57;
   }

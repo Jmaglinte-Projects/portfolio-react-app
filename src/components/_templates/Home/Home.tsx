@@ -41,6 +41,27 @@ const Home = () => {
   const works: PersonalProject[] = useMemo(() => {
     return [
       {
+        title: 'Crocsbook Project',
+        description: 'A practice project inspired by the need for greater transparency in public infrastructure initiatives. This platform helps communities monitor and document government projects by capturing and tracking daily photo updates, making it easier to follow progress and promote accountability — especially for flood control and other public works projects.',
+        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/crocsbook-preview.png',
+        techs: ['React', 'React Router Framework', 'SSR', 'Tailwindcss', 'MySql', 'gRPC', 'go', 'go-jet', 'jwt', 'Cloudflare R2'],
+        requestDemo: true,
+        sourceLinks: [
+          {
+            title: 'Frontend',
+            link: 'https://github.com/Jmaglinte-Projects/crocsbook-rrfm',
+          },
+          {
+            title: 'Backend',
+            link: 'https://github.com/Jmaglinte-Projects/crocsbook-go-app',
+          },
+          {
+            title: 'API',
+            link: 'https://github.com/Jmaglinte-Projects/crocsbook-api',
+          },
+        ],
+      },
+      {
         title: 'JMovies',
         description: 'Let you watch movies online without having to register or paying',
         posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/jmovies-preview.png',
@@ -123,12 +144,19 @@ const Home = () => {
                   <h4>Techs:</h4>
                   <div className="techs">{work.techs.join(', ')}</div>
                   <WorkItemActions>
-                    <a href={work.demoLink} target="_blank">
-                      Live Demo
+                    <a href={work.requestDemo ? 'mailto:aclc.jaffy.maglinte@gmail.com' : work.demoLink} target="_blank">
+                      {work.requestDemo ? 'Request Demo' : 'Live Demo'}
                     </a>
-                    <a href={work.sourceCodeLink} target="_blank">
-                      Code
-                    </a>
+                    {work.sourceLinks?.map((link, i) => (
+                      <a key={i} href={link.link} target="_blank">
+                        {link.title}
+                      </a>
+                    ))}
+                    {work.sourceCodeLink && (
+                      <a href={work.sourceCodeLink} target="_blank">
+                        Code
+                      </a>
+                    )}
                   </WorkItemActions>
                 </div>
               </WorksItemWrapper>
