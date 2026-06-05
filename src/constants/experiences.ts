@@ -15,7 +15,16 @@ export const experiences: Experience[] = [
         overview: "An online dating app",
         title: "Royal Partner",
       },
-      // TODO
+      {
+        title: "AI-Powered Motion Analysis System",
+        overview:
+          "An AI-powered motion analysis system for analyzing human motion data.",
+      },
+      {
+        title: "AI-Powered Masking App",
+        overview:
+          "Automatically recognizes people in videos and blurs their faces",
+      },
     ],
     title: "Junior Software Engineer",
     toDate: moment(),
