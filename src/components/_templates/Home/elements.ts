@@ -374,10 +374,6 @@ export const ProjectsGrid = styled.div`
   grid-template-columns: repeat(1, 1fr);
   gap: var(--spacing-2xl);
 
-  @media screen and (max-width: 1023px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
