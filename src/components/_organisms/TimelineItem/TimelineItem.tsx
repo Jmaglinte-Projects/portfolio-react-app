@@ -1,12 +1,18 @@
 import moment from "moment";
 import {
   CompanyWrapper,
+  CurrentBadge,
   DateWrapper,
   FromWrapper,
-  // OverviewWrapper,
   PositionWrapper,
+  ProjectTag,
+  ProjectTagList,
+  ProjectTagOverview,
+  ProjectTagTitle,
   ReponsibilityWrapper,
   ReponsibilityListWrapper,
+  SectionLabel,
+  TimelineItemHeader,
   TimelineItemWrapper,
   ToWrapper,
 } from "./elements";
@@ -15,24 +21,31 @@ import { TimelineItemProps } from "./types";
 const TimelineItem = (props: TimelineItemProps) => {
   const { item } = props;
 
+  const fromDate = item.fromDate.toDate
+    ? moment(item.fromDate.toDate())
+    : moment(item.fromDate as moment.Moment);
+
+  const toDate = item.toDate.toDate
+    ? moment(item.toDate.toDate())
+    : moment(item.toDate as moment.Moment);
+
+  const isCurrent = toDate.isSameOrAfter(moment().subtract(7, "days"));
+
   return (
     <TimelineItemWrapper>
-      <PositionWrapper>{item.title}</PositionWrapper>
+      <TimelineItemHeader>
+        <PositionWrapper>{item.title}</PositionWrapper>
+        {isCurrent && <CurrentBadge>Current</CurrentBadge>}
+      </TimelineItemHeader>
       <CompanyWrapper>{item.company}</CompanyWrapper>
       <DateWrapper>
-        <FromWrapper>
-          {moment(item.fromDate.toDate()).format("MM/DD/YYYY")}
-        </FromWrapper>{" "}
-        -{" "}
+        <FromWrapper>{fromDate.format("MMM YYYY")}</FromWrapper>
+        <span>–</span>
         <ToWrapper>
-          {moment(item.toDate.toDate()).format("MM/DD/YYYY")}
+          {isCurrent ? "Present" : toDate.format("MMM YYYY")}
         </ToWrapper>
       </DateWrapper>
-      {/* TODO: Overview */}
-      {/* <OverviewWrapper>{item.jobResponsibilities}</OverviewWrapper> */}
-      <br />
-      <br />
-      Job Responsibilities:
+      <SectionLabel>Responsibilities</SectionLabel>
       <ReponsibilityListWrapper>
         {item.jobResponsibilities.map((resp, i) => (
           <ReponsibilityWrapper key={i}>
@@ -42,17 +55,15 @@ const TimelineItem = (props: TimelineItemProps) => {
       </ReponsibilityListWrapper>
       {item?.projects.length > 0 && (
         <>
-          Projects:
-          {item?.projects
-            ? item.projects.map((project, i) => {
-                return (
-                  <ReponsibilityWrapper key={i}>
-                    {project.title}
-                    <p style={{ display: "block" }}>- {project.overview}</p>
-                  </ReponsibilityWrapper>
-                );
-              })
-            : ""}
+          <SectionLabel>Projects</SectionLabel>
+          <ProjectTagList>
+            {item.projects.map((project, i) => (
+              <ProjectTag key={i}>
+                <ProjectTagTitle>{project.title}</ProjectTagTitle>
+                <ProjectTagOverview>{project.overview}</ProjectTagOverview>
+              </ProjectTag>
+            ))}
+          </ProjectTagList>
         </>
       )}
     </TimelineItemWrapper>
