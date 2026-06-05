@@ -6,61 +6,61 @@ export const FooterWrapper = styled.div`
   left: 50%;
   transform: translateX(-50%);
   width: min(860px, calc(100% - 28px));
-  background-color: var(--background);
+  background-color: var(--canvas);
   z-index: 50;
+  padding: var(--spacing-md) var(--spacing-4xl) var(--spacing-md)
+    var(--spacing-md);
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-md);
 
-  padding: 12px 48px 12px 14px;
-  border: 1px solid rgba(126, 254, 126, 0.45);
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 1px rgba(126, 254, 126, 0.08),
-    0 10px 24px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(2px);
-
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 767px) {
     bottom: 10px;
     width: calc(100% - 16px);
-    padding: 10px 44px 10px 10px;
+    padding: var(--spacing-md) 44px var(--spacing-md) var(--spacing-md);
   }
 `;
 
 export const LinkWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  font-weight: bold;
+  gap: var(--spacing-sm);
 
   a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 5px 10px;
-    border: 1px solid rgba(126, 254, 126, 0.35);
-    border-radius: 6px;
-    font-size: 13px;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    min-height: 36px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border: 1px solid var(--hairline);
+    border-radius: var(--rounded-sm);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--body);
+    transition: border-color 0.2s ease, color 0.2s ease,
+      background-color 0.2s ease;
   }
 
   a:hover {
     text-decoration: none;
-    border-color: rgba(126, 254, 126, 0.75);
-    background-color: rgba(126, 254, 126, 0.09);
+    color: var(--ink);
+    border-color: var(--primary-soft);
+    background-color: var(--canvas-soft);
   }
 
   a.active {
     text-decoration: none;
-    border-color: rgba(126, 254, 126, 0.85);
-    background-color: rgba(126, 254, 126, 0.2);
-    box-shadow: inset 0 0 0 1px rgba(126, 254, 126, 0.12),
-      0 0 14px rgba(126, 254, 126, 0.2);
+    color: var(--on-primary);
+    border-color: var(--primary);
+    background-color: var(--primary);
   }
 
   @media screen and (max-width: 400px) {
-    gap: 6px;
+    gap: var(--spacing-xs);
 
     a {
-      padding: 5px 8px;
+      padding: var(--spacing-xs) var(--spacing-sm);
       font-size: 12px;
     }
   }
@@ -76,28 +76,29 @@ export const CloseButtonWrapper = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(126, 254, 126, 0.45);
-  border-radius: 6px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--rounded-sm);
   background: transparent;
-  color: var(--text);
-  font-family: inherit;
-  font-size: 16px;
+  color: var(--body);
+  font-family: var(--font-sans);
+  font-size: 14px;
   line-height: 1;
   cursor: pointer;
   transition: border-color 0.2s ease, background-color 0.2s ease,
-    box-shadow 0.2s ease;
+    color 0.2s ease;
 
   &:hover {
-    border-color: rgba(126, 254, 126, 0.75);
-    background-color: rgba(126, 254, 126, 0.09);
+    border-color: var(--primary-soft);
+    background-color: var(--canvas-soft);
+    color: var(--ink);
   }
 
   &:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(126, 254, 126, 0.32);
+    box-shadow: var(--focus-ring);
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 767px) {
     width: 28px;
     height: 28px;
     right: 8px;

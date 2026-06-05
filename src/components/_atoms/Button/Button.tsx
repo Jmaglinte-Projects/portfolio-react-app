@@ -1,7 +1,7 @@
-import { ButtonProps } from "antd";
+import { ButtonHTMLAttributes } from "react";
 import { ButtonWrapper } from "./elements";
 
-const Button = (props: ButtonProps) => {
+const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
   return <ButtonWrapper {...props} />;
 };
 

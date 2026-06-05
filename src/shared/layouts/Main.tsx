@@ -1,8 +1,9 @@
 import { Outlet } from "react-router";
+import { useState } from "react";
+import { ThemeToggle } from "../../components/_atoms/ThemeToggle";
+import { Banner } from "../../components/_organisms/Banner";
 import { Footer } from "../../components/_organisms/Footer";
 import { ContainerWrapper } from "./elements";
-import { useState } from "react";
-import { Banner } from "../../components/_organisms/Banner";
 
 const MailLayout = () => {
   const [footerVisible, setFooterVisible] = useState<boolean>(true);
@@ -13,6 +14,7 @@ const MailLayout = () => {
 
   return (
     <>
+      <ThemeToggle />
       <Banner />
       <ContainerWrapper>
         <Outlet />

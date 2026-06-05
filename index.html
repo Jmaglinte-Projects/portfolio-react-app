@@ -53,7 +53,20 @@
       data-rh="true"
     />
 
-    <link rel="stylesheet" href="/src/assets/css/fake_hacking_program.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        var stored = localStorage.getItem("portfolio-theme");
+        var theme =
+          stored === "light" || stored === "dark" ? stored : "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+      })();
+    </script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -71,70 +84,7 @@
   </head>
 
   <body>
-    <div class="matrix-container">
-      <canvas id="matrix"></canvas>
-    </div>
     <div id="root"></div>
-
     <script type="module" src="/src/main.tsx"></script>
-
-    <script>
-      const characters =
-        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      const charactersArray = characters.split("");
-
-      // Matrix configuration
-      const fontSize = 16;
-      const speed = 3;
-
-      // Create the canvas and context
-      const canvas = document.getElementById("matrix");
-      const context = canvas?.getContext("2d");
-
-      // Set the canvas dimensions
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-
-      // Calculate the number of columns and rows
-      const columns = Math.floor(canvas.width / fontSize);
-      const rows = Math.floor(canvas.height / fontSize);
-
-      // Initialize the columns
-      const matrix = [];
-      for (let i = 0; i < columns; i++) {
-        matrix[i] = 1;
-      }
-
-      // Matrix animation
-      function drawMatrix() {
-        context.fillStyle = "rgba(0, 0, 0, 0.05)";
-        context.fillRect(0, 0, canvas.width, canvas.height);
-
-        context.fillStyle = "#00FF00";
-        context.font = fontSize + "px monospace";
-
-        for (let i = 0; i < matrix.length; i++) {
-          const text =
-            charactersArray[Math.floor(Math.random() * charactersArray.length)];
-          context.fillText(text, i * fontSize, matrix[i] * fontSize);
-
-          if (matrix[i] * fontSize > canvas.height && Math.random() > 0.975) {
-            matrix[i] = 0;
-          }
-
-          matrix[i]++;
-        }
-      }
-
-      // Render loop
-      const animateMatrix = () => {
-        drawMatrix();
-        requestAnimationFrame(animateMatrix);
-      };
-
-      setTimeout(() => {
-        animateMatrix();
-      }, 1500);
-    </script>
   </body>
 </html>
