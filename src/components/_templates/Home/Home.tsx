@@ -94,23 +94,19 @@ const Home = () => {
   const works: PersonalProject[] = useMemo(() => {
     return [
       {
-        title: "Crocsbook Project",
+        title: 'Portfolio',
         description:
-          "A practice project inspired by the need for greater transparency in public infrastructure initiatives. This platform helps communities monitor and document government projects by capturing and tracking daily photo updates, making it easier to follow progress and promote accountability — especially for flood control and other public works projects.",
-        posterSrc:
-          "https://portfolio-assets.jmaglinte.com/assets/crocsbook-preview.png",
-        techs: [
-          "React",
-          "React Router Framework",
-          "SSR",
-          "Tailwindcss",
-          "MySql",
-          "gRPC",
-          "go",
-          "go-jet",
-          "jwt",
-          "Cloudflare R2",
-        ],
+          'A single-page developer portfolio with a Matrix-inspired terminal aesthetic — green monospace text. Includes an animated hero, about and skills sections, project cards with demo links, an experience timeline, and a floating bottom nav for quick section jumps.',
+        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/portfolio1-preview.png',
+        techs: ['React', 'TypeScript'],
+        demoLink: 'https://portfolio1.jmaglinte.com',
+        sourceCodeLink: 'https://github.com/Jmaglinte-Projects/portfolio-react-app/tree/jaffy/design-1',
+      },
+      {
+        title: 'Crocsbook Project',
+        description: 'A practice project inspired by the need for greater transparency in public infrastructure initiatives. This platform helps communities monitor and document government projects by capturing and tracking daily photo updates, making it easier to follow progress and promote accountability — especially for flood control and other public works projects.',
+        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/crocsbook-preview.png',
+        techs: ['React', 'React Router Framework', 'SSR', 'Tailwindcss', 'MySql', 'gRPC', 'go', 'go-jet', 'jwt', 'Cloudflare R2'],
         requestDemo: true,
         sourceLinks: [
           {
