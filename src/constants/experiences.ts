@@ -5,68 +5,51 @@ const fromMDY = (date: string) => moment(date, "MM/DD/YYYY", true);
 
 export const experiences: Experience[] = [
   {
-    company: "Vananaz Technologies Inc.",
+    company: "TechNova Solutions",
     projects: [
       {
-        overview: "Internal recruitment website",
-        title: "ETS",
+        overview: "Internal hiring portal for managing job postings and applicant tracking",
+        title: "HireHub",
       },
       {
-        overview: "An online dating app",
-        title: "Royal Partner",
+        overview: "Subscription-based fitness tracking platform with workout plans and progress charts",
+        title: "FitTrack Pro",
       },
-      // TODO
     ],
     title: "Junior Software Engineer",
     toDate: moment(),
     jobResponsibilities: [
       {
         description:
-          "Fostered a collaborative and supportive team environment across projects.",
+          "Collaborated with designers and product managers to ship new features on a bi-weekly release cycle.",
       },
       {
         description:
-          "Developed and enhanced product features both independently and with cross-functional teammates.",
+          "Built and maintained RESTful APIs consumed by web and mobile clients.",
       },
       {
         description:
-          "Maintained a high standard of professionalism, accountability, and respect in daily work.",
+          "Participated in code reviews and sprint planning to improve team delivery quality.",
       },
       {
         description:
-          "Actively participated in weekly sprint meetings and company-wide initiatives.",
+          "Wrote unit and integration tests to keep critical user flows stable in production.",
       },
       {
         description:
-          "Contributed to company growth by delivering reliable, quality-first engineering output.",
-      },
-      {
-        description:
-          "Maintained and updated existing codebases to improve stability and maintainability.",
-      },
-      {
-        description:
-          "Applied coding standards and best practices to ensure readable, scalable, and testable code.",
-      },
-      {
-        description:
-          "Supported the full software development lifecycle, from planning and implementation to deployment.",
-      },
-      {
-        description:
-          "Continuously upskilled in emerging tools and frameworks to improve delivery velocity.",
+          "Refactored legacy modules to improve readability, performance, and test coverage.",
       },
     ],
     fromDate: fromMDY("03/13/2023"),
   },
   {
     title: "Software Developer",
-    company: "Muramoto Audio Visual Phils., Inc.",
+    company: "BrightPath Digital",
     projects: [
       {
         overview:
-          "An in-house inventory system including: forecast, purchasing and sales",
-        title: "MPS (MAPLE Production System)",
+          "Inventory and order management system with forecasting, purchasing, and sales reporting",
+        title: "StockWise",
       },
     ],
     fromDate: fromMDY("07/01/2021"),
@@ -74,60 +57,44 @@ export const experiences: Experience[] = [
     jobResponsibilities: [
       {
         description:
-          "Reviewed existing systems and proposed practical improvements to performance and usability.",
+          "Developed internal dashboards used by operations and finance teams daily.",
       },
       {
         description:
-          "Evaluated and integrated suitable existing and emerging technologies into internal workflows.",
+          "Integrated third-party payment and shipping APIs into existing workflows.",
       },
       {
         description:
-          "Planned and coordinated assigned projects while providing clear progress and change updates to stakeholders.",
+          "Gathered requirements from stakeholders and translated them into actionable tickets.",
       },
       {
         description:
-          "Developed new features and modified internal web applications based on user requests and evolving requirements.",
+          "Monitored production logs and resolved bugs reported by end users.",
       },
       {
         description:
-          "Collaborated with managers, project leads, and end users to gather requirements, identify issues, and refine solutions.",
-      },
-      {
-        description:
-          "Contributed technical input and implementation suggestions during team planning and review sessions.",
-      },
-      {
-        description:
-          "Monitored and maintained production systems to ensure continuity and reliability.",
-      },
-      {
-        description:
-          "Maintained legacy applications through iterative enhancements and bug fixes.",
-      },
-      {
-        description:
-          "Supported process-improvement initiatives focused on quality, operational efficiency, and cost reduction.",
+          "Documented system architecture and deployment steps for onboarding new developers.",
       },
     ],
   },
   {
     title: "Web Developer",
-    company: "Proweaver Inc.",
+    company: "WebCraft Studio",
     projects: [],
     toDate: fromMDY("06/30/2021"),
     fromDate: fromMDY("08/06/2019"),
     jobResponsibilities: [
       {
         description:
-          "Maintained and updated client websites across WordPress, PrestaShop, Shopify, and WooCommerce.",
+          "Built and maintained client websites on WordPress, Shopify, and custom CMS platforms.",
       },
       {
         description:
-          "Integrated and configured WordPress plugins based on client-specific business requirements.",
+          "Converted Figma mockups into responsive, cross-browser compatible pages.",
       },
       {
         description:
-          "Converted approved website layouts into responsive WordPress implementations.",
+          "Configured plugins, themes, and SEO settings based on client requirements.",
       },
     ],
   },

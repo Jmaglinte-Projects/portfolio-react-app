@@ -17,10 +17,12 @@ import { TimelineItem } from "../../_organisms/TimelineItem";
 import { TimelineItemProps } from "antd/es/timeline/TimelineItem";
 import { TypeAnimation } from "react-type-animation";
 
-import { profile } from "./../../../assets/images";
 import { useMemo } from "react";
 import { PersonalProject } from "@/entities/Portfolio";
 import { experiences } from "@/constants/experiences";
+
+const PROFILE_IMAGE =
+  "https://ui-avatars.com/api/?name=John+Doe&size=300&background=6366f1&color=fff";
 
 const Home = () => {
   const mappedExperiences: TimelineItemProps[] =
@@ -31,7 +33,18 @@ const Home = () => {
     }, []) || [];
 
   const skills = useMemo(() => {
-    return ['HTML', 'CSS', 'JavaScript', 'React', 'TypeScript', 'PHP', 'Laravel', 'Kendo UI', 'Postgres', 'Firebase'].map((skill) => {
+    return [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "TypeScript",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Git",
+      "Docker",
+    ].map((skill) => {
       return {
         title: skill,
       };
@@ -41,41 +54,40 @@ const Home = () => {
   const works: PersonalProject[] = useMemo(() => {
     return [
       {
-        title: 'Crocsbook Project',
-        description: 'A practice project inspired by the need for greater transparency in public infrastructure initiatives. This platform helps communities monitor and document government projects by capturing and tracking daily photo updates, making it easier to follow progress and promote accountability — especially for flood control and other public works projects.',
-        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/crocsbook-preview.png',
-        techs: ['React', 'React Router Framework', 'SSR', 'Tailwindcss', 'MySql', 'gRPC', 'go', 'go-jet', 'jwt', 'Cloudflare R2'],
+        title: "TaskFlow",
+        description:
+          "A lightweight project management tool for small teams. Track tasks, assign owners, set deadlines, and visualize progress on a shared kanban board — all without the complexity of enterprise software.",
+        posterSrc: "https://placehold.co/600x400/6366f1/ffffff?text=TaskFlow",
+        techs: ["React", "TypeScript", "Node.js", "PostgreSQL", "Tailwind CSS"],
         requestDemo: true,
         sourceLinks: [
           {
-            title: 'Frontend',
-            link: 'https://github.com/Jmaglinte-Projects/crocsbook-rrfm',
+            title: "Frontend",
+            link: "https://github.com/example/taskflow-web",
           },
           {
-            title: 'Backend',
-            link: 'https://github.com/Jmaglinte-Projects/crocsbook-go-app',
-          },
-          {
-            title: 'API',
-            link: 'https://github.com/Jmaglinte-Projects/crocsbook-api',
+            title: "Backend",
+            link: "https://github.com/example/taskflow-api",
           },
         ],
       },
       {
-        title: 'JMovies',
-        description: 'Let you watch movies online without having to register or paying',
-        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/jmovies-preview.png',
-        techs: ['React', 'TMDb API'],
-        demoLink: 'https://jmovies.netlify.app/movies',
-        sourceCodeLink: 'https://github.com/pusoy/reactjs-movie-app',
+        title: "WeatherNow",
+        description:
+          "A clean weather dashboard that shows current conditions, hourly forecasts, and a seven-day outlook for any city worldwide.",
+        posterSrc: "https://placehold.co/600x400/0ea5e9/ffffff?text=WeatherNow",
+        techs: ["React", "OpenWeather API", "Chart.js"],
+        demoLink: "https://example.com/weathernow",
+        sourceCodeLink: "https://github.com/example/weathernow",
       },
       {
-        title: 'Danao Glass and Aluminum Supply',
-        description: 'Demo website for a glass and aluminum supply company. This is the first I built using React',
-        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/dga-preview.png',
-        techs: ['HTML', 'CSS', 'React'],
-        demoLink: 'https://danao-glass.netlify.app/',
-        sourceCodeLink: 'https://github.com/Jmaglinte-Projects/danao_glass_and_aluminum',
+        title: "ShopLite",
+        description:
+          "A demo e-commerce storefront with product listings, a shopping cart, and a simple checkout flow. Built as a learning project to explore React state management patterns.",
+        posterSrc: "https://placehold.co/600x400/f59e0b/ffffff?text=ShopLite",
+        techs: ["React", "Redux", "CSS Modules"],
+        demoLink: "https://example.com/shoplite",
+        sourceCodeLink: "https://github.com/example/shoplite",
       },
     ];
   }, []);
@@ -83,9 +95,9 @@ const Home = () => {
   return (
     <HomeWrapper>
       <ProfileDetailsWrapper>
-        <img className="profile" src={profile} alt="professional hacker" />
+        <img className="profile" src={PROFILE_IMAGE} alt="John Doe profile" />
         <div className="profile_info">
-          <TitleWrapper>Jaffy Maglinte</TitleWrapper>
+          <TitleWrapper>John Doe</TitleWrapper>
           <TypeAnimation
             sequence={[
               "I am into web development!",
@@ -100,14 +112,14 @@ const Home = () => {
           />
           <span>Junior Software Engineer</span>
           <div className="social_medial">
-            <a href="https://www.linkedin.com/in/jmaglinte/" target="_blank">
+            <a href="https://linkedin.com/in/example" target="_blank">
               Linkedin
             </a>
-            <a href="https://github.com/jaffymaglinte" target="_blank">
+            <a href="https://github.com/example" target="_blank">
               Github
             </a>
-            <a href="https://www.facebook.com/jmaglinte12" target="_blank">
-              Facebook
+            <a href="https://twitter.com/example" target="_blank">
+              Twitter
             </a>
           </div>
         </div>
@@ -115,7 +127,13 @@ const Home = () => {
 
       <AboutMeWrapper>
         <TitleWrapper id="about">About me</TitleWrapper>
-        <p>I am an experienced developer with a passion for building software. I continuously seek opportunities to expand my knowledge and stay up-to-date with the latest technologies, allowing me to deliver high-quality code and exceed client expectations. With a dedication to continuous learning and a drive for excellence, I am committed to making a positive impact through my work as a developer;</p>
+        <p>
+          I am a software developer who enjoys turning ideas into reliable,
+          user-friendly applications. I care about writing clean code, learning
+          new tools, and working with teams to deliver products that solve real
+          problems. When I am not coding, I like exploring side projects and
+          keeping up with the latest in web development.
+        </p>
       </AboutMeWrapper>
 
       <SkillsWrapper>
@@ -142,10 +160,17 @@ const Home = () => {
                   <div className="title">{work.title}</div>
                   <p className="description">{work.description}</p>
                   <h4>Techs:</h4>
-                  <div className="techs">{work.techs.join(', ')}</div>
+                  <div className="techs">{work.techs.join(", ")}</div>
                   <WorkItemActions>
-                    <a href={work.requestDemo ? 'mailto:aclc.jaffy.maglinte@gmail.com' : work.demoLink} target="_blank">
-                      {work.requestDemo ? 'Request Demo' : 'Live Demo'}
+                    <a
+                      href={
+                        work.requestDemo
+                          ? "mailto:demo@example.com"
+                          : work.demoLink
+                      }
+                      target="_blank"
+                    >
+                      {work.requestDemo ? "Request Demo" : "Live Demo"}
                     </a>
                     {work.sourceLinks?.map((link, i) => (
                       <a key={i} href={link.link} target="_blank">
