@@ -371,54 +371,174 @@ export const SkillFamiliarLabel = styled.span`
 
 export const ProjectsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: var(--spacing-2xl);
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3xl);
 
   @media screen and (max-width: 767px) {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-2xl);
   }
 `;
 
 export const ProjectCard = styled.article`
-  display: flex;
-  flex-direction: column;
-  background: var(--canvas);
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 42%) 1fr;
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--primary) 10%, transparent), transparent 45%),
+    var(--canvas-soft);
   border: 1px solid var(--hairline);
   border-radius: var(--rounded-md);
   overflow: hidden;
-  transition: box-shadow 0.2s ease;
+  box-shadow: 0 12px 32px color-mix(in srgb, #000 22%, transparent);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: linear-gradient(
+      180deg,
+      var(--primary),
+      color-mix(in srgb, var(--primary) 20%, transparent)
+    );
+    opacity: 0.55;
+    transition: opacity 0.25s ease;
+    z-index: 2;
+  }
 
   &:hover {
-    box-shadow: var(--glow-hover);
+    border-color: color-mix(in srgb, var(--primary) 55%, var(--hairline));
+    box-shadow:
+      0 18px 44px color-mix(in srgb, #000 30%, transparent),
+      0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent),
+      var(--glow-hover);
+    transform: translateY(-3px);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const ProjectMedia = styled.div`
+  position: relative;
+  min-height: 240px;
+  overflow: hidden;
+  background: var(--canvas);
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 55%,
+      color-mix(in srgb, var(--canvas) 70%, transparent) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  [data-theme="light"] &::after {
+    content: none;
+  }
+
+  @media screen and (max-width: 900px) {
+    min-height: 200px;
+
+    &::after {
+      background: linear-gradient(
+        180deg,
+        transparent 40%,
+        color-mix(in srgb, var(--canvas) 80%, transparent) 100%
+      );
+    }
+
+    [data-theme="light"] &::after {
+      content: none;
+    }
   }
 `;
 
 export const ProjectPoster = styled.img`
   width: 100%;
-  height: 200px;
+  height: 100%;
+  min-height: 240px;
   object-fit: cover;
-  border-bottom: 1px solid var(--hairline);
-  background: var(--canvas-soft);
-  flex-shrink: 0;
+  background: var(--canvas);
+  display: block;
+  transition: transform 0.45s ease;
+
+  ${ProjectCard}:hover & {
+    transform: scale(1.04);
+  }
+
+  @media screen and (max-width: 900px) {
+    min-height: 200px;
+  }
+`;
+
+export const ProjectIndex = styled.span`
+  position: absolute;
+  top: var(--spacing-lg);
+  left: var(--spacing-lg);
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  letter-spacing: 1.5px;
+  color: var(--on-primary);
+  background: var(--primary);
+  border-radius: var(--rounded-sm);
+  padding: var(--spacing-xxs) var(--spacing-sm);
 `;
 
 export const ProjectContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--spacing-md);
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-3xl);
   flex: 1;
   min-width: 0;
+  background: var(--canvas-soft);
+
+  @media screen and (max-width: 767px) {
+    padding: var(--spacing-2xl);
+  }
+`;
+
+export const ProjectTitle = styled.h3`
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.3px;
+  color: var(--ink-strong);
+  margin: 0;
+
+  @media screen and (max-width: 767px) {
+    font-size: 20px;
+    line-height: 28px;
+  }
 `;
 
 export const ProjectDescription = styled.p`
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
-  line-height: 22px;
+  line-height: 24px;
   color: var(--body);
   margin: 0;
   flex: 1;
+  max-width: 62ch;
 `;
 
 export const TechLabel = styled.span`
@@ -449,12 +569,18 @@ export const TechTag = styled.span`
   padding: var(--spacing-xxs) var(--spacing-md);
 `;
 
+export const ProjectTechTag = styled(TechTag)`
+  background: color-mix(in srgb, var(--primary) 10%, var(--canvas));
+  border-color: color-mix(in srgb, var(--primary) 28%, var(--hairline));
+`;
+
 export const ActionRow = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-sm);
   margin-top: auto;
-  padding-top: var(--spacing-md);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--hairline);
 `;
 
 // ─── Buttons ──────────────────────────────────────────────────────────────────

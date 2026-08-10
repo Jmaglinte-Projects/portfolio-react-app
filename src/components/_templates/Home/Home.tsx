@@ -39,7 +39,10 @@ import {
   ProjectCard,
   ProjectContent,
   ProjectDescription,
+  ProjectIndex,
+  ProjectMedia,
   ProjectPoster,
+  ProjectTitle,
   ProjectsGrid,
   SectionDivider,
   SectionHeader,
@@ -52,6 +55,7 @@ import {
   TechLabel,
   TechTag,
   TechTags,
+  ProjectTechTag,
 } from "./elements";
 
 const Home = () => {
@@ -301,20 +305,25 @@ const Home = () => {
           <SectionTitle>Personal Projects</SectionTitle>
         </SectionHeader>
         <ProjectsGrid>
-          {works.map((work) => (
+          {works.map((work, index) => (
             <ProjectCard key={work.title}>
-              <ProjectPoster
-                src={work.posterSrc}
-                alt={`${work.title} preview`}
-              />
+              <ProjectMedia>
+                <ProjectIndex>
+                  {String(index + 1).padStart(2, "0")}
+                </ProjectIndex>
+                <ProjectPoster
+                  src={work.posterSrc}
+                  alt={`${work.title} preview`}
+                />
+              </ProjectMedia>
               <ProjectContent>
-                <CardTitle style={{ marginBottom: 0 }}>{work.title}</CardTitle>
+                <ProjectTitle>{work.title}</ProjectTitle>
                 <ProjectDescription>{work.description}</ProjectDescription>
                 <div>
                   <TechLabel>Technologies</TechLabel>
                   <TechTags style={{ marginTop: "var(--spacing-sm)" }}>
                     {work.techs.map((tech) => (
-                      <TechTag key={tech}>{tech}</TechTag>
+                      <ProjectTechTag key={tech}>{tech}</ProjectTechTag>
                     ))}
                   </TechTags>
                 </div>
