@@ -98,6 +98,17 @@ const Home = () => {
   const works: PersonalProject[] = useMemo(() => {
     return [
       {
+        title: 'Barkadaoke',
+        description:
+          `A shared karaoke queue app built for barkadas who love singing along to YouTube. Create a room, invite friends from their phones, queue up songs, and manage who sings next—all without passing around the remote.
+
+Built with React, TypeScript, Firebase, and the YouTube API.`,
+        posterSrc: 'https://portfolio-assets.jmaglinte.com/assets/barkadaoke-preview.png',
+        techs: ['React', 'TypeScript', 'Firebase', 'YouTube API', 'Tailwindcss', 'shadcn/ui'],
+        demoLink: 'https://barkadaoke.jmaglinte.com',
+        sourceCodeLink: 'https://github.com/Jmaglinte-Projects/barkadaoke-react-app',
+      },
+      {
         title: 'Portfolio',
         description:
           'A single-page developer portfolio with a Matrix-inspired terminal aesthetic — green monospace text. Includes an animated hero, about and skills sections, project cards with demo links, an experience timeline, and a floating bottom nav for quick section jumps.',
